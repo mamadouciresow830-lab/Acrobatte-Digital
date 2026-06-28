@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acrobate Digital — Agence Social Media | Conakry, Guinée</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080808;
+    --dark: #111111;
+    --card: #161616;
+    --border: #242424;
+    --gold: #C9A84C;
+    --gold-light: #E2C47A;
+    --gold-dim: rgba(201,168,76,0.12);
+    --white: #F5F5F0;
+    --muted: #888880;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 5rem;
+    background: rgba(8,8,8,0.94); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold) !important; color: var(--black) !important; padding: 0.5rem 1.3rem !important; border-radius: 2px; font-weight: 600 !important; }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: flex-start;
+    padding: 9rem 5rem 5rem; position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(201,168,76,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.035) 1px, transparent 1px);
+    background-size: 64px 64px; pointer-events: none;
+  }
+  .hero-glow {
+    position: absolute; width: 700px; height: 700px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%);
+    top: -120px; right: -120px; pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold); font-family: 'Space Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 0.4rem 1rem; border-radius: 2px; margin-bottom: 2rem; position: relative;
+  }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: blink 2s infinite; }
+  @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6.5vw, 5.8rem); font-weight: 900; line-height: 1.02; letter-spacing: -0.02em; margin-bottom: 1.5rem; max-width: 800px; position: relative; }
+  .hero-title em { font-style: normal; color: var(--gold); }
+  .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 500px; line-height: 1.75; margin-bottom: 2.8rem; font-weight: 300; position: relative; }
+  .hero-actions { display: flex; gap: 1.2rem; flex-wrap: wrap; position: relative; }
+  .btn-gold { background: var(--gold); color: var(--black); padding: 0.9rem 2.2rem; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.04em; text-decoration: none; border-radius: 2px; transition: background 0.2s, transform 0.2s; display: inline-block; }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-ghost { border: 1px solid var(--border); color: var(--white); padding: 0.9rem 2.2rem; font-size: 0.9rem; letter-spacing: 0.04em; text-decoration: none; border-radius: 2px; transition: border-color 0.2s, color 0.2s; display: inline-block; }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-kpis { display: flex; gap: 3rem; margin-top: 4.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border); position: relative; }
+  .kpi-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--gold); line-height: 1; }
+  .kpi-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.35rem; }
+
+  /* SECTIONS */
+  section { padding: 6.5rem 5rem; }
+  .section-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.9rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 700; line-height: 1.15; margin-bottom: 0.8rem; }
+  .section-title em { font-style: normal; color: var(--gold); }
+  .section-body { color: var(--muted); font-size: 0.95rem; max-width: 500px; line-height: 1.75; font-weight: 300; }
+  .rule { width: 40px; height: 1px; background: var(--gold); margin: 1.2rem 0; }
+
+  /* PROBLÈME */
+  #probleme { background: var(--dark); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 4rem; }
+  .problem-list { display: flex; flex-direction: column; gap: 1rem; }
+  .p-card { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 1.4rem 1.6rem; display: flex; align-items: flex-start; gap: 1.1rem; transition: border-color 0.2s; }
+  .p-card:hover { border-color: var(--gold); }
+  .p-icon { font-size: 1.7rem; flex-shrink: 0; }
+  .p-card h4 { font-size: 0.93rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .p-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+  .big-block { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 3.5rem; text-align: center; }
+  .big-block .num { font-family: 'Playfair Display', serif; font-size: 5.5rem; font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 1rem; }
+  .big-block p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 0.8rem; }
+  .big-block .cta-line { color: var(--gold); font-size: 0.88rem; font-weight: 500; }
+
+  /* SERVICES */
+  #services { background: var(--black); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+  .s-card { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 2.5rem 2rem; transition: border-color 0.25s, transform 0.25s; position: relative; overflow: hidden; }
+  .s-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(140deg, var(--gold-dim) 0%, transparent 55%); opacity: 0; transition: opacity 0.3s; }
+  .s-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .s-card:hover::after { opacity: 1; }
+  .s-icon { font-size: 2.2rem; margin-bottom: 1.5rem; display: block; }
+  .s-card h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.7rem; }
+  .s-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.4rem; }
+  .s-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag { font-size: 0.68rem; font-family: 'Space Mono', monospace; color: var(--gold); background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.2); padding: 0.2rem 0.55rem; border-radius: 2px; }
+
+  /* TARIFS */
+  #tarifs { background: var(--dark); }
+  .tarifs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+  .tarif-card { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 2.5rem 2rem; transition: border-color 0.2s; position: relative; }
+  .tarif-card.featured { border-color: var(--gold); }
+  .tarif-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--black); font-family: 'Space Mono', monospace; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; padding: 0.2rem 0.8rem; border-radius: 2px; white-space: nowrap; }
+  .tarif-card h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .tarif-card .tarif-desc { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.5rem; }
+  .tarif-price { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 0.3rem; }
+  .tarif-period { font-size: 0.75rem; color: var(--muted); margin-bottom: 1.8rem; }
+  .tarif-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 2rem; }
+  .tarif-list li { font-size: 0.84rem; color: var(--muted); display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.4; }
+  .tarif-list li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .tarif-btn { display: block; text-align: center; padding: 0.85rem; font-size: 0.85rem; font-weight: 600; border-radius: 2px; text-decoration: none; transition: 0.2s; }
+  .tarif-btn-outline { border: 1px solid var(--border); color: var(--white); }
+  .tarif-btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .tarif-btn-gold { background: var(--gold); color: var(--black); }
+  .tarif-btn-gold:hover { background: var(--gold-light); }
+
+  /* PROCESSUS */
+  #processus { background: var(--black); }
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3.5rem; position: relative; }
+  .process-steps::before { content: ''; position: absolute; top: 1.5rem; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.2)); }
+  .step { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 2rem 1.5rem; text-align: center; transition: border-color 0.2s; }
+  .step:hover { border-color: var(--gold); }
+  .step-num { width: 44px; height: 44px; border-radius: 50%; background: var(--gold); color: var(--black); font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; position: relative; z-index: 1; box-shadow: 0 0 0 4px var(--card); }
+  .step h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .step p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+  /* AVANTAGE IA */
+  #ia { background: var(--dark); }
+  .ia-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 4rem; }
+  .ia-list { display: flex; flex-direction: column; gap: 0.9rem; }
+  .ia-row { display: flex; align-items: flex-start; gap: 1rem; padding: 1.2rem 1.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 4px; transition: border-color 0.2s; }
+  .ia-row:hover { border-color: var(--gold); }
+  .ia-row span { font-size: 1.3rem; flex-shrink: 0; }
+  .ia-row h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.2rem; }
+  .ia-row p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+  .ia-visual { background: var(--card); border: 1px solid var(--gold); border-radius: 4px; padding: 3rem 2.5rem; text-align: center; }
+  .ia-logo { display: inline-block; background: var(--gold); color: var(--black); font-family: 'Space Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; padding: 0.5rem 1.2rem; border-radius: 2px; margin-bottom: 1.5rem; }
+  .ia-visual h3 { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 0.8rem; }
+  .ia-visual p { font-size: 0.86rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+  .ratio-box { display: flex; justify-content: center; align-items: center; gap: 1rem; padding: 1.5rem; background: var(--black); border-radius: 4px; border: 1px solid var(--border); }
+  .ratio-n { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: var(--gold); line-height: 1; }
+  .ratio-txt { text-align: left; font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+  /* MARCHÉ */
+  #marche { background: var(--black); }
+  .market-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-top: 3.5rem; }
+  .m-card { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 2rem 1.5rem; text-align: center; transition: border-color 0.2s; }
+  .m-card:hover { border-color: var(--gold); }
+  .m-num { font-family: 'Playfair Display', serif; font-size: 2.3rem; font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; }
+  .m-label { font-size: 0.82rem; font-weight: 500; margin-bottom: 0.3rem; line-height: 1.4; }
+  .m-sub { font-size: 0.73rem; color: var(--muted); font-style: italic; }
+
+  /* VISION */
+  #vision { background: var(--dark); }
+  .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+  .ph { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 2rem 1.8rem; transition: border-color 0.2s; }
+  .ph:hover { border-color: var(--gold); }
+  .ph-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.16em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.5rem; }
+  .ph h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.7rem; }
+  .ph p { font-size: 0.83rem; color: var(--muted); line-height: 1.7; }
+
+  /* FONDATEUR */
+  #fondateur { background: var(--black); }
+  .founder-layout { display: grid; grid-template-columns: 340px 1fr; gap: 5rem; align-items: start; margin-top: 4rem; }
+  .founder-card { background: var(--card); border: 1px solid var(--gold); border-radius: 4px; padding: 3rem 2.5rem; text-align: center; position: sticky; top: 6rem; }
+  .f-avatar { width: 90px; height: 90px; border-radius: 50%; background: var(--gold-dim); border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.3rem; font-family: 'Playfair Display', serif; font-size: 2.3rem; font-weight: 900; color: var(--gold); }
+  .founder-card h3 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; margin-bottom: 0.3rem; }
+  .f-role { font-size: 0.85rem; color: var(--gold); font-weight: 500; margin-bottom: 0.3rem; }
+  .f-loc { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.2rem; }
+  .f-rule { width: 36px; height: 1px; background: var(--gold); margin: 0 auto 1.2rem; }
+  .f-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem; }
+  .f-badge { font-size: 0.68rem; font-family: 'Space Mono', monospace; color: var(--gold); background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.2); padding: 0.25rem 0.7rem; border-radius: 2px; }
+  .founder-body h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.8rem; }
+  .founder-body p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; font-weight: 300; margin-bottom: 1.3rem; }
+  .atouts { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 1.5rem; }
+  .atout { display: flex; align-items: flex-start; gap: 1rem; padding: 1.2rem 1.4rem; background: var(--card); border: 1px solid var(--border); border-radius: 4px; }
+  .atout span { font-size: 1.3rem; flex-shrink: 0; }
+  .atout h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.2rem; }
+  .atout p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+  /* TEMOIGNAGES */
+  #temoignages { background: var(--dark); }
+  .temo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+  .temo { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 2rem; transition: border-color 0.2s; }
+  .temo:hover { border-color: var(--gold); }
+  .temo-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 0.8rem; letter-spacing: 0.1em; }
+  .temo blockquote { font-size: 0.88rem; color: var(--muted); line-height: 1.7; font-style: italic; margin-bottom: 1.2rem; }
+  .temo-author { display: flex; align-items: center; gap: 0.8rem; }
+  .temo-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--gold-dim); border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--gold); flex-shrink: 0; }
+  .temo-name { font-size: 0.85rem; font-weight: 600; }
+  .temo-role { font-size: 0.75rem; color: var(--muted); }
+
+  /* CONTACT */
+  #contact { background: var(--black); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 4rem; align-items: start; }
+  .c-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.7rem; }
+  .c-info p { color: var(--muted); font-size: 0.88rem; line-height: 1.75; margin-bottom: 1.8rem; font-weight: 300; }
+  .c-items { display: flex; flex-direction: column; gap: 0.8rem; }
+  .c-item { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.2rem; background: var(--card); border: 1px solid var(--border); border-radius: 4px; font-size: 0.85rem; color: var(--muted); }
+  .c-form { display: flex; flex-direction: column; gap: 0.9rem; }
+  .fg { display: flex; flex-direction: column; gap: 0.35rem; }
+  .fg label { font-size: 0.7rem; font-family: 'Space Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .fg input, .fg textarea, .fg select { background: var(--card); border: 1px solid var(--border); color: var(--white); padding: 0.8rem 1rem; border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 0.88rem; outline: none; transition: border-color 0.2s; width: 100%; appearance: none; }
+  .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(--gold); }
+  .fg textarea { resize: vertical; min-height: 100px; }
+  .fg select option { background: var(--card); }
+  .submit-btn { background: var(--gold); color: var(--black); border: none; padding: 1rem; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; border-radius: 2px; cursor: pointer; transition: background 0.2s, transform 0.2s; width: 100%; margin-top: 0.4rem; }
+  .submit-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer { background: var(--dark); border-top: 1px solid var(--border); padding: 3rem 5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; }
+  .footer-logo span { color: var(--gold); }
+  .footer-copy { font-size: 0.76rem; color: var(--muted); }
+  .footer-nav { display: flex; gap: 1.5rem; }
+  .footer-nav a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-nav a:hover { color: var(--gold); }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    #hero { padding: 7rem 1.5rem 4rem; }
+    .hero-kpis { flex-wrap: wrap; gap: 1.5rem; }
+    .two-col, .ia-layout, .contact-grid, .founder-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .services-grid, .tarifs-grid, .temo-grid { grid-template-columns: 1fr; }
+    .market-grid { grid-template-columns: repeat(2,1fr); }
+    .phases, .process-steps { grid-template-columns: 1fr; }
+    .process-steps::before { display: none; }
+    footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+    .founder-card { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Acrobate<span>.</span>Digital</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#tarifs">Tarifs</a></li>
+    <li><a href="#ia">Notre IA</a></li>
+    <li><a href="#fondateur">À propos</a></li>
+    <li><a href="#temoignages">Témoignages</a></li>
+    <li><a href="#contact" class="nav-cta">Demander un devis</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-tag">Conakry, Guinée · Afrique de l'Ouest francophone</div>
+  <h1 class="hero-title">Votre entreprise mérite<br>d'exister <em>en ligne.</em></h1>
+  <p class="hero-sub">Acrobate Digital prend en charge votre présence digitale de A à Z — création de contenu, réseaux sociaux, génération de leads — adaptée à votre marché local, en français.</p>
+  <div class="hero-actions">
+    <a href="#services" class="btn-gold">Voir nos services</a>
+    <a href="#contact" class="btn-ghost">Demander un devis gratuit</a>
+  </div>
+  <div class="hero-kpis">
+    <div>
+      <div class="kpi-num">3</div>
+      <div class="kpi-label">Services complets</div>
+    </div>
+    <div>
+      <div class="kpi-num">100%</div>
+      <div class="kpi-label">Contenu en français</div>
+    </div>
+    <div>
+      <div class="kpi-num">IA</div>
+      <div class="kpi-label">Propulsé par l'IA</div>
+    </div>
+    <div>
+      <div class="kpi-num">Local</div>
+      <div class="kpi-label">Ancré en Guinée</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLÈME -->
+<section id="probleme">
+  <div class="reveal">
+    <div class="section-eyebrow">Le constat</div>
+    <h2 class="section-title">90% des PME africaines<br><em>sont invisibles</em> en ligne.</h2>
+    <div class="rule"></div>
+    <p class="section-body">De bons produits, de bons services — mais aucune visibilité numérique. Ce n'est pas un manque de volonté, c'est un manque de solutions accessibles et adaptées.</p>
+  </div>
+  <div class="two-col" style="margin-top:3.5rem;">
+    <div class="problem-list">
+      <div class="p-card reveal"><div class="p-icon">💸</div><div><h4>Les grandes agences sont trop chères</h4><p>Des tarifs en dollars ou en euros, inaccessibles pour les PME qui opèrent en francs guinéens.</p></div></div>
+      <div class="p-card reveal"><div class="p-icon">🌍</div><div><h4>Les freelances étrangers ne comprennent pas</h4><p>Ils ignorent les réalités culturelles, linguistiques et économiques du marché guinéen.</p></div></div>
+      <div class="p-card reveal"><div class="p-icon">📵</div><div><h4>Aucune solution pensée pour l'Afrique francophone</h4><p>Les outils, les stratégies, les contenus — rien n'est conçu pour vous.</p></div></div>
+      <div class="p-card reveal"><div class="p-icon">📉</div><div><h4>Des clients perdus chaque jour</h4><p>Vos concurrents qui ont une présence en ligne captent les clients que vous méritez.</p></div></div>
+    </div>
+    <div class="big-block reveal">
+      <div class="num">90%</div>
+      <p>des PME d'Afrique de l'Ouest n'ont aucune stratégie digitale professionnelle. Chaque jour sans présence en ligne, c'est des opportunités perdues.</p>
+      <p class="cta-line">→ Acrobate Digital est la solution locale que vous attendiez.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="reveal">
+    <div class="section-eyebrow">Nos prestations</div>
+    <h2 class="section-title">Trois services,<br>un seul <em>objectif.</em></h2>
+    <div class="rule"></div>
+    <p class="section-body">Tout ce dont votre entreprise a besoin pour exister, attirer et convertir en ligne — sans que vous ayez à vous en occuper.</p>
+  </div>
+  <div class="services-grid">
+    <div class="s-card reveal">
+      <span class="s-icon">📱</span>
+      <h3>Gestion Réseaux Sociaux</h3>
+      <p>Nous créons et publions du contenu régulier et professionnel pour votre entreprise : posts, stories, vidéos courtes — en français, adapté à votre audience locale.</p>
+      <div class="s-tags"><span class="tag">Facebook</span><span class="tag">Instagram</span><span class="tag">TikTok</span><span class="tag">WhatsApp</span></div>
+    </div>
+    <div class="s-card reveal">
+      <span class="s-icon">🎯</span>
+      <h3>Génération de Leads</h3>
+      <p>Des systèmes automatisés pour transformer vos visiteurs en prospects qualifiés : funnels de vente, formulaires de capture, séquences de suivi.</p>
+      <div class="s-tags"><span class="tag">Funnels</span><span class="tag">Automatisation</span><span class="tag">WhatsApp Bot</span></div>
+    </div>
+    <div class="s-card reveal">
+      <span class="s-icon">📣</span>
+      <h3>Publicité Ciblée</h3>
+      <p>Des campagnes Meta Ads rentables, avec ciblage géographique local précis, optimisées pour votre budget et votre secteur d'activité en Guinée.</p>
+      <div class="s-tags"><span class="tag">Meta Ads</span><span class="tag">Ciblage local</span><span class="tag">ROI optimisé</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TARIFS -->
+<section id="tarifs">
+  <div class="reveal">
+    <div class="section-eyebrow">Nos formules</div>
+    <h2 class="section-title">Des tarifs adaptés<br>à <em>votre réalité.</em></h2>
+    <div class="rule"></div>
+    <p class="section-body">Trois formules claires, pensées pour les budgets des PME guinéennes. Pas de surprise, pas de coût caché.</p>
+  </div>
+  <div class="tarifs-grid">
+    <div class="tarif-card reveal">
+      <h3>Starter</h3>
+      <p class="tarif-desc">Pour démarrer votre présence digitale</p>
+      <div class="tarif-price">500 000 GNF</div>
+      <div class="tarif-period">par mois</div>
+      <ul class="tarif-list">
+        <li>Gestion d'1 réseau social</li>
+        <li>12 posts par mois</li>
+        <li>Création graphique incluse</li>
+        <li>Rapport mensuel</li>
+        <li>Support WhatsApp</li>
+      </ul>
+      <a href="#contact" class="tarif-btn tarif-btn-outline">Choisir Starter</a>
+    </div>
+    <div class="tarif-card featured reveal">
+      <div class="tarif-badge">LE PLUS POPULAIRE</div>
+      <h3>Croissance</h3>
+      <p class="tarif-desc">Pour développer votre audience</p>
+      <div class="tarif-price">1 200 000 GNF</div>
+      <div class="tarif-period">par mois</div>
+      <ul class="tarif-list">
+        <li>Gestion de 3 réseaux sociaux</li>
+        <li>30 posts par mois</li>
+        <li>Stories & Reels inclus</li>
+        <li>1 campagne publicitaire</li>
+        <li>Funnel de leads basique</li>
+        <li>Rapport hebdomadaire</li>
+        <li>Support prioritaire</li>
+      </ul>
+      <a href="#contact" class="tarif-btn tarif-btn-gold">Choisir Croissance</a>
+    </div>
+    <div class="tarif-card reveal">
+      <h3>Premium</h3>
+      <p class="tarif-desc">Pour dominer votre marché local</p>
+      <div class="tarif-price">2 500 000 GNF</div>
+      <div class="tarif-period">par mois</div>
+      <ul class="tarif-list">
+        <li>Gestion complète (5 réseaux)</li>
+        <li>Contenu illimité</li>
+        <li>Campagnes publicitaires avancées</li>
+        <li>Funnel de vente complet</li>
+        <li>Stratégie éditoriale sur mesure</li>
+        <li>Rapport en temps réel</li>
+        <li>Account manager dédié</li>
+      </ul>
+      <a href="#contact" class="tarif-btn tarif-btn-outline">Choisir Premium</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSUS -->
+<section id="processus">
+  <div class="reveal">
+    <div class="section-eyebrow">Comment ça marche</div>
+    <h2 class="section-title">Opérationnel en<br><em>4 étapes simples.</em></h2>
+    <div class="rule"></div>
+    <p class="section-body">Un processus clair et rapide pour que vous puissiez vous concentrer sur votre cœur de métier pendant qu'on s'occupe de votre digital.</p>
+  </div>
+  <div class="process-steps">
+    <div class="step reveal">
+      <div class="step-num">1</div>
+      <h4>Consultation gratuite</h4>
+      <p>On échange sur votre entreprise, vos objectifs et votre audience pour comprendre vos besoins réels.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">2</div>
+      <h4>Stratégie personnalisée</h4>
+      <p>On construit un plan d'action sur mesure : contenu, calendrier, cibles, plateformes et budget.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">3</div>
+      <h4>Création & Publication</h4>
+      <p>Notre équipe produit et publie votre contenu régulièrement selon le planning validé ensemble.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">4</div>
+      <h4>Suivi & Optimisation</h4>
+      <p>Vous recevez des rapports clairs et on ajuste continuellement pour maximiser vos résultats.</p>
+    </div>
+  </div>
+</section>
+
+<!-- IA -->
+<section id="ia">
+  <div class="ia-layout">
+    <div>
+      <div class="reveal">
+        <div class="section-eyebrow">Notre force</div>
+        <h2 class="section-title">L'intelligence artificielle<br>au service de <em>votre croissance.</em></h2>
+        <div class="rule"></div>
+        <p class="section-body">Nous utilisons les meilleurs outils IA pour livrer un service de qualité "grande agence" à un tarif accessible pour votre PME.</p>
+      </div>
+      <div class="ia-list" style="margin-top:2.5rem;">
+        <div class="ia-row reveal"><span>⚡</span><div><h4>Productivité maximale</h4><p>L'IA nous permet de gérer plusieurs clients avec la vitesse d'une grande équipe — sans en répercuter le coût sur vous.</p></div></div>
+        <div class="ia-row reveal"><span>🎨</span><div><h4>Contenu de qualité professionnelle</h4><p>Visuels, textes, vidéos — produits avec des outils IA de pointe, cohérents avec votre identité de marque.</p></div></div>
+        <div class="ia-row reveal"><span>📊</span><div><h4>Décisions basées sur les données</h4><p>Analyse en temps réel de vos performances pour optimiser chaque action et maximiser votre retour sur investissement.</p></div></div>
+        <div class="ia-row reveal"><span>🔄</span><div><h4>Automatisation intelligente</h4><p>Réponses automatiques, funnels de leads, planification de contenu — tout tourne pendant que vous gérez votre business.</p></div></div>
+      </div>
+    </div>
+    <div class="ia-visual reveal">
+      <div class="ia-logo">PROPULSÉ PAR L'IA</div>
+      <h3>Grande qualité, prix local</h3>
+      <p>Là où une agence classique mobilise une équipe entière pour un seul client, nous utilisons l'IA pour offrir le même niveau de qualité à une fraction du coût — et c'est vous qui en bénéficiez.</p>
+      <div class="ratio-box">
+        <div class="ratio-n">1×</div>
+        <div style="font-size:1.3rem;color:var(--gold);">=</div>
+        <div class="ratio-n">5×</div>
+        <div class="ratio-txt"><strong style="color:var(--white);">1 expert IA</strong><br>= équipe de 5<br>pour votre succès</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARCHÉ -->
+<section id="marche">
+  <div class="reveal">
+    <div class="section-eyebrow">Le contexte</div>
+    <h2 class="section-title">L'Afrique digitale<br><em>croît à toute vitesse.</em></h2>
+    <div class="rule"></div>
+    <p class="section-body">Les chiffres sont clairs : votre marché est en pleine transformation digitale. Les PME qui s'y positionnent maintenant auront un avantage décisif.</p>
+  </div>
+  <div class="market-grid">
+    <div class="m-card reveal"><div class="m-num">$26Md</div><div class="m-label">Marché digital Afrique 2025</div><div class="m-sub">+15% par an jusqu'en 2030</div></div>
+    <div class="m-card reveal"><div class="m-num">416M</div><div class="m-label">Africains connectés sur mobile</div><div class="m-sub">Source : GSMA 2025</div></div>
+    <div class="m-card reveal"><div class="m-num">150M</div><div class="m-label">Personnes en Afrique de l'Ouest francophone</div><div class="m-sub">Votre marché potentiel</div></div>
+    <div class="m-card reveal"><div class="m-num">60%</div><div class="m-label">Réduction des coûts d'acquisition avec l'IA</div><div class="m-sub">McKinsey Global Institute</div></div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section id="vision">
+  <div class="reveal">
+    <div class="section-eyebrow">Notre ambition</div>
+    <h2 class="section-title">De Conakry<br>à toute <em>l'Afrique francophone.</em></h2>
+    <div class="rule"></div>
+    <p class="section-body">Acrobate Digital n'est pas juste une agence locale. C'est le début d'un mouvement de digitalisation des PME africaines.</p>
+  </div>
+  <div class="phases">
+    <div class="ph reveal">
+      <div class="ph-label">Phase 1 · 2025–2026</div>
+      <h3>Guinée 🇬🇳</h3>
+      <p>Lancement et validation du modèle à Conakry. Acquisition des premiers clients PME. Construction de la réputation locale.</p>
+    </div>
+    <div class="ph reveal">
+      <div class="ph-label">Phase 2 · 2026–2027</div>
+      <h3>Afrique de l'Ouest 🌍</h3>
+      <p>Expansion au Sénégal, Côte d'Ivoire, Mali et Burkina Faso. Partenariats locaux. Formation de nouveaux experts digitaux.</p>
+    </div>
+    <div class="ph reveal">
+      <div class="ph-label">Phase 3 · 2027+</div>
+      <h3>Afrique Francophone 🌐</h3>
+      <p>Modèle scalable à travers toute l'Afrique francophone. Leader de référence du digital marketing pour les PME africaines.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FONDATEUR -->
+<section id="fondateur">
+  <div class="reveal">
+    <div class="section-eyebrow">Qui sommes-nous</div>
+    <h2 class="section-title">Un entrepreneur<br><em>de terrain,</em> pour vous.</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="founder-layout">
+    <div class="founder-card reveal">
+      <div class="f-avatar">S</div>
+      <h3>Sow</h3>
+      <div class="f-role">Fondateur & Directeur</div>
+      <div class="f-loc">📍 Conakry, Guinée</div>
+      <div class="f-rule"></div>
+      <div class="f-badges">
+        <span class="f-badge">Enseignant</span>
+        <span class="f-badge">Entrepreneur</span>
+        <span class="f-badge">Auteur</span>
+        <span class="f-badge">Expert Digital</span>
+      </div>
+    </div>
+    <div class="founder-body">
+      <div class="reveal">
+        <h3>Communicateur, bâtisseur, visionnaire.</h3>
+        <p>Enseignant de formation, entrepreneur par conviction. Je comprends à la fois les besoins des clients et les mécaniques profondes de la communication digitale efficace.</p>
+        <p>Ma mission est simple : donner aux PME guinéennes les mêmes outils que les grandes entreprises internationales — à un prix qu'elles peuvent vraiment se permettre.</p>
+      </div>
+      <div class="atouts">
+        <div class="atout reveal"><span>🎓</span><div><h4>Pédagogue & Communicateur</h4><p>Une maîtrise rare de la communication claire et convaincante, appliquée au marketing digital.</p></div></div>
+        <div class="atout reveal"><span>📱</span><div><h4>Expert Social Media</h4><p>Création de contenu, stratégie éditoriale, production vidéo — Facebook, Instagram, TikTok maîtrisés.</p></div></div>
+        <div class="atout reveal"><span>✍️</span><div><h4>Auteur Publié</h4><p><em>L'Amour Entrepreneur</em> — un ebook publié qui témoigne de sa capacité à créer et vendre du contenu de valeur.</p></div></div>
+        <div class="atout reveal"><span>🏗️</span><div><h4>Bâtisseur de Systèmes</h4><p>Funnels, automatisations, outils IA — une capacité technique rare pour un entrepreneur indépendant africain.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES -->
+<section id="temoignages">
+  <div class="reveal">
+    <div class="section-eyebrow">Ils nous font confiance</div>
+    <h2 class="section-title">Ce que disent<br>nos <em>premiers clients.</em></h2>
+    <div class="rule"></div>
+  </div>
+  <div class="temo-grid">
+    <div class="temo reveal">
+      <div class="temo-stars">★★★★★</div>
+      <blockquote>"Depuis qu'Acrobate Digital gère notre page Facebook, nos clients nous trouvent facilement. On reçoit des messages tous les jours grâce au contenu qu'ils créent."</blockquote>
+      <div class="temo-author">
+        <div class="temo-avatar">A</div>
+        <div><div class="temo-name">Aminata D.</div><div class="temo-role">Propriétaire boutique, Conakry</div></div>
+      </div>
+    </div>
+    <div class="temo reveal">
+      <div class="temo-stars">★★★★★</div>
+      <blockquote>"Le contenu est professionnel, régulier, et il parle vraiment à notre clientèle guinéenne. Enfin une agence qui comprend notre marché sans explications compliquées."</blockquote>
+      <div class="temo-author">
+        <div class="temo-avatar">M</div>
+        <div><div class="temo-name">Mamadou B.</div><div class="temo-role">Restaurateur, Kaloum</div></div>
+      </div>
+    </div>
+    <div class="temo reveal">
+      <div class="temo-stars">★★★★★</div>
+      <blockquote>"Grâce au funnel de leads, on reçoit maintenant des demandes automatiquement. C'est comme avoir un commercial en ligne 24h/24. Le meilleur investissement qu'on ait fait."</blockquote>
+      <div class="temo-author">
+        <div class="temo-avatar">F</div>
+        <div><div class="temo-name">Fatoumata K.</div><div class="temo-role">Directrice école privée, Matoto</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <div class="section-eyebrow">Travaillons ensemble</div>
+    <h2 class="section-title">Prêt à développer<br>votre <em>présence digitale ?</em></h2>
+    <div class="rule"></div>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <div class="c-info reveal">
+        <h3>Contactez-nous</h3>
+        <p>Vous avez une PME en Guinée ou en Afrique de l'Ouest et vous voulez enfin exister en ligne ? Parlons-en. La première consultation est gratuite et sans engagement. Nous répondons sous 24 heures.</p>
+      </div>
+      <div class="c-items reveal">
+        <div class="c-item"><span>📍</span><span>Conakry, République de Guinée</span></div>
+        <div class="c-item"><span>📱</span><span>WhatsApp disponible sur demande</span></div>
+        <div class="c-item"><span>📘</span><span>@AcrobateDigital · Facebook / Instagram</span></div>
+        <div class="c-item"><span>⏱️</span><span>Réponse garantie sous 24 heures</span></div>
+        <div class="c-item"><span>🎁</span><span>Première consultation 100% gratuite</span></div>
+      </div>
+    </div>
+    <div class="c-form reveal">
+      <div class="fg"><label>Votre nom complet</label><input type="text" placeholder="Ex : Mamadou Diallo"></div>
+      <div class="fg"><label>Nom de votre entreprise</label><input type="text" placeholder="Ex : Restaurant Le Palmier"></div>
+      <div class="fg"><label>Votre numéro WhatsApp</label><input type="tel" placeholder="Ex : +224 6XX XXX XXX"></div>
+      <div class="fg">
+        <label>Service souhaité</label>
+        <select>
+          <option>Gestion Réseaux Sociaux</option>
+          <option>Génération de Leads</option>
+          <option>Publicité Ciblée</option>
+          <option>Pack Complet</option>
+          <option>Je ne sais pas encore</option>
+        </select>
+      </div>
+      <div class="fg"><label>Votre message</label><textarea placeholder="Décrivez votre entreprise et vos objectifs digitaux..."></textarea></div>
+      <button class="submit-btn">Envoyer ma demande →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Acrobate<span>.</span>Digital</div>
+  <div class="footer-copy">© 2026 Acrobate Digital · Conakry, Guinée · Tous droits réservés</div>
+  <div class="footer-nav">
+    <a href="#services">Services</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="#fondateur">À propos</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 70);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  reveals.forEach(el => obs.observe(el));
+
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 130) cur = s.id; });
+    links.forEach(a => { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--gold)' : ''; });
+  });
+</script>
+</body>
+</html>
